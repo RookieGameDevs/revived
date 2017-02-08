@@ -2,6 +2,7 @@
 """
 from revived.action import Action
 from revived.reducer import combine_reducers
+from revived.reducer import Module
 from revived.reducer import reducer
 
 
@@ -36,22 +37,18 @@ def test_reducer__combine():
     assert result == {'part1': False, 'part2': False}
 
 
-def test_reducer__integration():
-    @reducer('action1')
+def test_reducer__module_reducer():
+    module = Module()
+
+    @module.reducer('action1')
     def red1(prev, action):
-        next = action['data']
-        return next
+        return False
 
-    @reducer('action2')
+    @module.reducer('action2')
     def red2(prev, action):
-        next = action['data']
-        return next
+        return True
 
-    combined = combine_reducers(
-        part1=red1,
-        part2=red2)
-
-    result = combined({'part1': None, 'part2': None}, Action('action1', {'data': True}))
-    assert result == {'part1': True, 'part2': None}
-    result = combined({'part1': None, 'part2': None}, Action('action2', {'data': True}))
-    assert result == {'part1': None, 'part2': True}
+    result = module(None, Action('action1'))
+    assert result is False
+    result = module(None, Action('action2'))
+    assert result is True

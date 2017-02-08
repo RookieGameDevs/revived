@@ -4,6 +4,29 @@
 from functools import wraps
 
 
+class Module:
+    def __init__(self):
+        self._reducers = []
+
+    def __call__(self, prev, action):
+        next = prev
+        for r in self._reducers:
+            next = r(next, action)
+        return next
+
+    def reducer(self, action_type):
+        def wrap(f):
+            @wraps(f)
+            def wrapped(prev, action):
+                next = prev
+                if action.type == action_type:
+                    next = f(prev, action)
+                return next
+            self._reducers.append(wrapped)
+            return wrapped
+        return wrap
+
+
 def reducer(action_type):
     def wrap(f):
         @wraps(f)
