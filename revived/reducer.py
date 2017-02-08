@@ -17,10 +17,10 @@ def reducer(action_type):
 
 
 def combine_reducers(**reducers):
-    def exec(prev, action):
+    def reduce(prev, action):
         next = {}
         for key, r in reducers.items():
             next[key] = r(prev.get(key), action)
         return next
 
-    return exec
+    return reduce
