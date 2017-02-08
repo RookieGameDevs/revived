@@ -1,20 +1,19 @@
 """TODO: add documentation.
 """
 
-
-def create_reducer(action_type, r):
-    def red(prev, action):
-        next = prev
-        if action['type'] == action_type:
-            next = r(prev, action)
-        return next
-    return red
+from functools import wraps
 
 
 def reducer(action_type):
-    def wrapper(r):
-        return create_reducer(action_type, r)
-    return wrapper
+    def wrap(f):
+        @wraps(f)
+        def wrapped(prev, action):
+            next = prev
+            if action.type == action_type:
+                next = f(prev, action)
+            return next
+        return wrapped
+    return wrap
 
 
 def combine_reducers(**reducers):

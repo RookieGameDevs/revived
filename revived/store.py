@@ -1,8 +1,19 @@
 """TODO: add documentation
 """
 
+from .action import action
+from .action import ActionType as BaseActionType
 import copy
 import uuid
+
+
+class ActionType(BaseActionType):
+    INIT = 'init'
+
+
+@action(ActionType.INIT)
+def init():
+    pass
 
 
 class DispatchInReducerError(Exception):
@@ -16,6 +27,8 @@ class Store:
 
         self._subscribers = {}
         self._is_reducing = False
+
+        self.dispatch(init())
 
     def subscribe(self, callback):
         key = uuid.uuid1()
