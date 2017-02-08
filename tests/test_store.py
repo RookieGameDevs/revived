@@ -19,22 +19,11 @@ def test_store__creation(dummy_reducer):
 def test_store__dispatch(dummy_reducer):
     store = Store(dummy_reducer)
     store.dispatch('test')
-    assert store.get_state() == 'test'
-
-
-def test_store__creation__preloaded_state(dummy_reducer):
-    store = Store(dummy_reducer, 'initial')
-    assert store.get_state() == 'initial'
-
-
-def test_store__dispatch__preloaded_state(dummy_reducer):
-    store = Store(dummy_reducer, 'initial')
-    store.dispatch('test')
-    assert store.get_state() == 'test'
+    assert store.get_state() ==  'test'
 
 
 def tets_store__dispatch__dispatch_in_reducer(dummy_reducer):
-    store = Store(dummy_reducer, 'initial')
+    store = Store(dummy_reducer)
 
     def wrong_reducer(state, action):
         store.dispatch('should fail')
@@ -45,7 +34,7 @@ def tets_store__dispatch__dispatch_in_reducer(dummy_reducer):
 
 
 def test_store__dispatch__dispatch_in_subscriber(dummy_reducer):
-    store = Store(dummy_reducer, 'initial')
+    store = Store(dummy_reducer)
 
     def callback():
         if store.get_state() == 'test1':
@@ -64,7 +53,7 @@ def test_store__dispatch__subscriber(dummy_reducer):
         nonlocal called
         called = True
 
-    store = Store(dummy_reducer, 'initial')
+    store = Store(dummy_reducer)
     store.subscribe(callback)
     store.dispatch('test')
 
@@ -78,7 +67,7 @@ def test_store__unsubscribe(dummy_reducer):
         nonlocal called
         called += 1
 
-    store = Store(dummy_reducer, 'initial')
+    store = Store(dummy_reducer)
     unsubscribe = store.subscribe(callback)
 
     store.dispatch('test1')

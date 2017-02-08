@@ -10,9 +10,9 @@ class DispatchInReducerError(Exception):
 
 
 class Store:
-    def __init__(self, reducer, preloaded_state=None):
+    def __init__(self, reducer):
         self._reducer = reducer
-        self._state = self._preloaded_state = preloaded_state
+        self._state = None
 
         self._subscribers = {}
         self._is_reducing = False
