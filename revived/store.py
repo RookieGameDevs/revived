@@ -1,4 +1,7 @@
-"""TODO: add documentation
+"""Store module.
+
+This module implements the global state store, and the init action and
+action_creator. This is the entry point of the revived module.
 """
 from .action import action
 from .action import Action
@@ -11,20 +14,47 @@ import uuid
 
 
 class ActionType(BaseActionType):
+    """Action types for the store module.
+
+    Basically the only type here is the **INIT** one. Reducers should wait for
+    this action to create the initial state for the state subpath they are
+    responsible of.
+    """
     INIT = 'init'
 
 
 @action(ActionType.INIT)
 def init():
+    """Action creator for the init aciton.
+    """
     pass
 
 
 class DispatchInReducerError(Exception):
+    """Exception raised when a dispatch is called inside a reducer.
+    """
     pass
 
 
 class Store:
+    """Container object of the global state.
+
+    This object is responsible of the global state. Its main responsibilities
+    are:
+    * Keeping track of all the subscribers, and call them on state changes.
+    * Keeping reference to the reducer to be used and call it to proprly handle
+      state changes.
+    """
     def __init__(self, reducer: Reducer) -> None:
+        """Constructor.
+
+        Creates the store, using the given function as reducer. At the beginning
+        no callback is subscribed to store changes. It is possible to add
+        subscribers later, while there is no way - at the moment - to replace
+        the reducer.
+
+        :param reducer: The root reducer.
+        """
         self._reducer = reducer
         self._state = None  # type: Any
 
@@ -34,6 +64,16 @@ class Store:
         self.dispatch(init())
 
     def subscribe(self, callback: Callable[[], None]) -> Callable[[], None]:
+        """Subscribes a callback to state changes.
+
+        Every time the state changes, the callback is called. No parameters are
+        passed to the callback. It is responsibility of the store handler to
+        actually connect the store with the caller. The returned function can be
+        called without arguments to unsubscribe the callback.
+
+        :param callback: The callback to be subscribed.
+        :returns: The unsubscribe functions.
+        """
         key = uuid.uuid1()
         self._subscribers[key] = callback
 
@@ -43,6 +83,15 @@ class Store:
         return unsubscribe
 
     def dispatch(self, action: Action) -> None:
+        """Dispatches an action.
+
+        This is the only piece of code responsible of dispatching actions. When
+        an action is dispatched, the state is changed according to the defined
+        root reducer and all the subscribers are called. *The calling order is
+        not guaranteed.
+
+        :param action: The action that should be dispatched.
+        """
         if self._is_reducing:
             raise DispatchInReducerError
         self._is_reducing = True
@@ -53,4 +102,6 @@ class Store:
             cback()
 
     def get_state(self) -> Any:
+        """Returns the global state contained into the store.
+        """
         return self._state
