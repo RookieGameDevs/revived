@@ -39,11 +39,13 @@ def reducer(action_type):
     return wrap
 
 
-def combine_reducers(**reducers):
+def combine_reducers(*top_reducers, **reducers):
     def reduce(prev, action):
-        next = {}
+        next = prev
+        for r in top_reducers:
+            next = r(next, action)
         for key, r in reducers.items():
-            next[key] = r(prev.get(key), action)
+            next[key] = r(next.get(key), action)
         return next
 
     return reduce
