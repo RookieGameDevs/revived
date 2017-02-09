@@ -56,8 +56,7 @@ def action(action_type: ActionType) -> Callable[[Callable], Callable]:
     functions preparing the proper Action object that is needed by the revived
     API.
 
-    :param action_type: The type of the action. :returns: The appropriate action
-        creator.
+    :param action_type: The type of the action.
     :returns: The action creator.
     """
     def wrap(f: Callable[..., dict]) -> Callable[..., Action]:
