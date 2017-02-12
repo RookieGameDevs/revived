@@ -9,6 +9,7 @@ from enum import unique
 from functools import wraps
 from typing import Any
 from typing import Callable
+from typing import Dict
 from typing import Optional
 
 
@@ -31,7 +32,7 @@ class Action(dict):
     store the type as *metadata* instead of part of the action data itself.
     """
 
-    def __init__(self, action_type: ActionType, data: Optional[dict[str, Any]]=None) -> None:
+    def __init__(self, action_type: ActionType, data: Optional[Dict[str, Any]]=None) -> None:
         """Constructor.
 
         Builds an action using the specified action type and optional data.
@@ -59,7 +60,7 @@ def action(action_type: ActionType) -> Callable[[Callable], Callable]:
     :param action_type: The type of the action.
     :returns: The action creator.
     """
-    def wrap(f: Callable[..., dict]) -> Callable[..., Action]:
+    def wrap(f: Callable[..., Dict]) -> Callable[..., Action]:
         @wraps(f)
         def wrapped(*args, **kwargs) -> Action:
             return Action(action_type, f(*args, **kwargs))
