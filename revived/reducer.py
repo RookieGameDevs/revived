@@ -26,6 +26,8 @@ class Module:
 
     This snippet:
 
+    .. code:: python
+
         module_reducer = Module()
 
         @mod.reduder(ActionType.DUMMY_ACTION_TYPE1)
@@ -41,6 +43,8 @@ class Module:
             return next
 
     has exactly the same result of:
+
+    .. code:: python
 
         @reducer(ActionType.DUMMY_ACTION_TYPE1)
         def dummy1(prev, action):

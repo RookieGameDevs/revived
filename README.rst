@@ -53,6 +53,11 @@ Contribute
 
     pip install -r requirements.txt
 
+#. Build the documentation::
+
+    cd docs
+    make html  # or whatever format you prefer
+
 #. Work on the revived module.
 #. Write tests.
 #. Run tests::
