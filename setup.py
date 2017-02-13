@@ -4,15 +4,23 @@ from os import path
 
 here = path.abspath(path.dirname(__file__))
 
+VERSION = '0.1.1'
+
 with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
-    long_description = f.read()
+    LONG_DESCRIPTION = f.read()
+
+with open(path.join(here, 'CHANGELOG.rst'), encoding='utf-8') as f:
+    CHANGELOG = f.read()
 
 setup(
     name='revived',
-    version='0.1.1',
+    version=VERSION,
 
     description='Redux-inspired library in python',
-    long_description=long_description,
+    long_description='\n\n'.join([
+        LONG_DESCRIPTION,
+        CHANGELOG
+    ]),
 
     url='https://github.com/RookieGameDevs/revived',
     author='Lorenzo Berni',
