@@ -82,6 +82,37 @@ class Store:
 
         return unsubscribe
 
+    def subscriber(self, callback: Callable[[], None]) -> Callable[[], None]:
+        """Decorator function to subscribe a function to store changes.
+
+        The subscribed function will be called every time the internal state of
+        the store changes.
+
+        NOTE: The decorator function will return the function itself. To
+        unsubscribe the callback the user should use the *unsubscribe* function
+        attached into the callback.
+
+        .. code:: python
+
+            # create the store object
+            store = Store(root_reducer)
+
+            # define and subscribe the function
+            @store.subscriber
+            def a_subscriber():
+                # do something!
+                pass
+
+            # unsubscribe the function
+            a_subscriber.unsubscribe()
+
+        :param callback: The callback to be subscribed. :returns: The callback
+        itself.
+        """
+        unsubscribe = self.subscribe(callback)
+        callback.unsubscribe = unsubscribe
+        return callback
+
     def dispatch(self, action: Action) -> None:
         """Dispatches an action.
 
