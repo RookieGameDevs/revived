@@ -71,7 +71,43 @@ class Store:
     are:
     * Keeping track of all the subscribers, and call them on state changes.
     * Keeping reference to the reducer to be used and call it to proprly handle
-      state changes.
+    state changes.
+
+    There are two ways to subscribe and usubscribe to store changes:
+
+    #. using the ``Store.subscribe`` method:
+
+       .. code:: python
+
+           # create the store object
+           store = Store(root_reducer)
+
+           # define the function
+           def a_subscriber():
+               # do something!
+               pass
+
+           # subscribe the function
+           unsubscribe = store.subscribe(a_subscriber)
+
+           # unsubscribe the function
+           unsubscribe()
+
+    #. using the ``Store.subscriber`` decorator:
+
+       .. code:: python
+
+           # create the store object
+           store = Store(root_reducer)
+
+           # define and subscribe the function
+           @store.subscriber
+           def a_subscriber():
+               # do something!
+               pass
+
+           # unsubscribe the function
+           a_subscriber.unsubscribe()
     """
     def __init__(self, reducer: Union[Reducer, Module]) -> None:
         """Constructor.
@@ -115,27 +151,13 @@ class Store:
 
         The subscribed function will be called every time the internal state of
         the store changes.
-
-        NOTE: The decorator function will return the function itself. To
+        **NOTE: The decorator function will return the function itself**. To
         unsubscribe the callback the user should use the *unsubscribe* function
         attached into the callback.
 
-        .. code:: python
-
-            # create the store object
-            store = Store(root_reducer)
-
-            # define and subscribe the function
-            @store.subscriber
-            def a_subscriber():
-                # do something!
-                pass
-
-            # unsubscribe the function
-            a_subscriber.unsubscribe()
-
         :param callback: The callback to be subscribed. :returns: The callback
-        itself.
+            itself.
+        :returns: The wrapping subscriber.
         """
         unsubscribe = self.subscribe(callback)
         s = Subscriber(callback, unsubscribe)
@@ -146,8 +168,8 @@ class Store:
 
         This is the only piece of code responsible of dispatching actions. When
         an action is dispatched, the state is changed according to the defined
-        root reducer and all the subscribers are called. *The calling order is
-        not guaranteed.
+        root reducer and all the subscribers are called. **The calling order is
+        not guaranteed**.
 
         :param action: The action that should be dispatched.
         """
@@ -161,6 +183,8 @@ class Store:
             cback()
 
     def get_state(self) -> Any:
-        """Returns the global state contained into the store.
+        """Getter for the global state.
+
+        :returns: The global state contained into the store.
         """
         return self._state
