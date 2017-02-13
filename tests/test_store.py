@@ -4,7 +4,8 @@ from revived.action import Action
 from revived.store import ActionType as AT
 from revived.store import DispatchInReducerError
 from revived.store import Store
-import pytest
+# Note: we do not have library stubs for pytest so we are going to ignore it.
+import pytest  # type: ignore
 
 
 @pytest.fixture
