@@ -76,6 +76,21 @@ def test_store__dispatch__subscriber_decorator(dummy_reducer):
     assert called
 
 
+def test_store__dispatch__subscriber_decorator__direct_call(dummy_reducer):
+    store = Store(dummy_reducer)
+
+    called = False
+
+    @store.subscriber
+    def callback():
+        nonlocal called
+        called = True
+
+    callback()
+
+    assert called
+
+
 def test_store__unsubscribe(dummy_reducer):
     called = 0
 

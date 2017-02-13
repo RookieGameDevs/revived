@@ -10,6 +10,7 @@ from functools import wraps
 from typing import Any
 from typing import Callable
 from typing import List
+from typing import Union
 
 Reducer = Callable[[Any, Action], Any]
 ReducerList = List[Reducer]
@@ -62,7 +63,7 @@ class Module:
         Creates a module - ie. an aggregate of reducers - that works like a
         single reducer on a specific state.
         """
-        self._reducers = []  # type:
+        self._reducers = []  # type: List
         ReducerList
 
     def __call__(self, prev: Any, action: Action):
@@ -119,7 +120,7 @@ def reducer(action_type: ActionType) -> Callable[[Reducer], Reducer]:
     return wrap
 
 
-def combine_reducers(*top_reducers: Reducer, **reducers: Reducer) -> Reducer:
+def combine_reducers(*top_reducers: Union[Reducer, Module], **reducers: Union[Reducer, Module]) -> Reducer:
     """Create a reducer combining the reducers passed as parameters.
 
     It is possible to use this function to combine top-level reducers or to
