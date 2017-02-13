@@ -4,7 +4,8 @@ from revived.action import Action
 from revived.store import ActionType as AT
 from revived.store import DispatchInReducerError
 from revived.store import Store
-import pytest
+# Note: we do not have library stubs for pytest so we are going to ignore it.
+import pytest  # type: ignore
 
 
 @pytest.fixture
@@ -72,6 +73,21 @@ def test_store__dispatch__subscriber_decorator(dummy_reducer):
         called = True
 
     store.dispatch(Action('test'))
+
+    assert called
+
+
+def test_store__dispatch__subscriber_decorator__direct_call(dummy_reducer):
+    store = Store(dummy_reducer)
+
+    called = False
+
+    @store.subscriber
+    def callback():
+        nonlocal called
+        called = True
+
+    callback()
 
     assert called
 

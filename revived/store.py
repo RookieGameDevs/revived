@@ -6,9 +6,11 @@ action_creator. This is the entry point of the revived module.
 from .action import action
 from .action import Action
 from .action import ActionType as BaseActionType
+from .reducer import Module
 from .reducer import Reducer
 from typing import Any
 from typing import Callable
+from typing import Union
 import copy
 import uuid
 
@@ -36,6 +38,32 @@ class DispatchInReducerError(Exception):
     pass
 
 
+class Subscriber:
+    """Wrapper around a subscriber function with unsubscribe property.
+
+    Creating a subscriber via decorator it is not possible to return the
+    unsubscribe function. So a Subscriber is created around the callback, that
+    contains the unsubscribe function to be used to properly unregister the
+    subscriber.
+    """
+    def __init__(self, callback: Callable[[], None], unsubscribe: Callable[[], None]) -> None:
+        """Constructor.
+
+        Creates a subscriber wrapper around a callback, with the provided
+        unsubscribe function.
+
+        :param callback: The callback to be wrapped into the subscriber.
+        :param unsubscribe: The unsubscribe function for the subscriber.
+        """
+        self.callback = callback
+        self.unsubscribe = unsubscribe
+
+    def __call__(self) -> None:
+        """Calls the wrapped subscriber.
+        """
+        self.callback()
+
+
 class Store:
     """Container object of the global state.
 
@@ -45,7 +73,7 @@ class Store:
     * Keeping reference to the reducer to be used and call it to proprly handle
       state changes.
     """
-    def __init__(self, reducer: Reducer) -> None:
+    def __init__(self, reducer: Union[Reducer, Module]) -> None:
         """Constructor.
 
         Creates the store, using the given function as reducer. At the beginning
@@ -82,7 +110,7 @@ class Store:
 
         return unsubscribe
 
-    def subscriber(self, callback: Callable[[], None]) -> Callable[[], None]:
+    def subscriber(self, callback: Callable[[], None]) -> Subscriber:
         """Decorator function to subscribe a function to store changes.
 
         The subscribed function will be called every time the internal state of
@@ -110,8 +138,8 @@ class Store:
         itself.
         """
         unsubscribe = self.subscribe(callback)
-        callback.unsubscribe = unsubscribe
-        return callback
+        s = Subscriber(callback, unsubscribe)
+        return s
 
     def dispatch(self, action: Action) -> None:
         """Dispatches an action.
