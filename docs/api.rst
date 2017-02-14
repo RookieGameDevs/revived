@@ -1,13 +1,13 @@
-API documentation
 =================
+API Documentation
+=================
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+   api/store
+   api/reducer
+   api/action
+
 .. automodule:: revived
-   :members:
-
-.. automodule:: revived.action
-   :members:
-
-.. automodule:: revived.reducer
-   :members:
-
-.. automodule:: revived.store
    :members:
