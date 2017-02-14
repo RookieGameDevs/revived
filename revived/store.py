@@ -1,7 +1,66 @@
-"""Store module.
+"""
+Store module
+============
 
-This module implements the global state store, and the init action and
+This module implements the **global state store**, and the ``init`` action and
 action_creator. This is the entry point of the revived module.
+
+Dispatch actions
+----------------
+
+To dispatch actions the :any:`revived.store.Store.dispatch` method should be
+used, passing as parameter the result of an action_creator. See more in
+:any:`revived.action.action` and :any:`revived.action.Action`.
+
+.. code:: python
+
+    # create the store object
+    store = Store(root_reducer)
+
+    # register subscribers
+    # ...
+
+    # dispatch an action using the action_creator <an_action_creator>
+    store.dispatch(an_action_creator(a_parameter, another_parameter))
+
+Subscribe and unsubscribe to state changes
+------------------------------------------
+
+There are two ways to **subscribe** and **usubscribe** to store changes:
+
+#. using the :any:`revived.store.Store.subscribe` method:
+
+    .. code:: python
+
+        # create the store object
+        store = Store(root_reducer)
+
+        # define the function
+        def a_subscriber():
+            # do something!
+            pass
+
+        # subscribe the function
+        unsubscribe = store.subscribe(a_subscriber)
+
+        # unsubscribe the function
+        unsubscribe()
+
+#. using the :any:`revived.store.Store.subscriber` decorator:
+
+    .. code:: python
+
+        # create the store object
+        store = Store(root_reducer)
+
+        # define and subscribe the function
+        @store.subscriber
+        def a_subscriber():
+            # do something!
+            pass
+
+        # unsubscribe the function
+        a_subscriber.unsubscribe()
 """
 from .action import action
 from .action import Action
@@ -18,7 +77,7 @@ import uuid
 class ActionType(BaseActionType):
     """Action types for the store module.
 
-    Basically the only type here is the **INIT** one. Reducers should wait for
+    Basically the only type here is the ``INIT`` one. Reducers should wait for
     this action to create the initial state for the state subpath they are
     responsible of.
     """
@@ -27,41 +86,52 @@ class ActionType(BaseActionType):
 
 @action(ActionType.INIT)
 def init():
-    """Action creator for the init aciton.
+    """Action creator for the init action.
     """
     pass
 
 
 class DispatchInReducerError(Exception):
-    """Exception raised when a dispatch is called inside a reducer.
+    """Raised when :any:`revived.store.Store.dispatch` is called in a reducer.
     """
-    pass
+    # FIXME: this method is added to avoid sphinx_autodoc_typehints errors:
+    # see https://github.com/agronholm/sphinx-autodoc-typehints/issues/12
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
 
 
 class Subscriber:
-    """Wrapper around a subscriber function with unsubscribe property.
+    """Wrapper around a subscriber function with the ``unsubscribe`` property.
 
-    Creating a subscriber via decorator it is not possible to return the
-    unsubscribe function. So a Subscriber is created around the callback, that
-    contains the unsubscribe function to be used to properly unregister the
-    subscriber.
+    While creating a subscriber using the decorator it is not possible to return
+    the ``unsubscribe`` function. So a ``Subscriber`` is created wrapping the
+    callback, that contains the :any:`revived.store.Subscriber.unsubscribe`
+    function to be used to properly unregister the subscriber.
     """
     def __init__(self, callback: Callable[[], None], unsubscribe: Callable[[], None]) -> None:
         """Constructor.
 
         Creates a subscriber wrapper around a callback, with the provided
-        unsubscribe function.
+        ``unsubscribe`` function.
 
         :param callback: The callback to be wrapped into the subscriber.
         :param unsubscribe: The unsubscribe function for the subscriber.
         """
         self.callback = callback
-        self.unsubscribe = unsubscribe
+        self._unsubscribe = unsubscribe
 
     def __call__(self) -> None:
         """Calls the wrapped subscriber.
         """
         self.callback()
+
+    @property
+    def unsubscribe(self) -> Callable[[], None]:
+        """Property containing the ``unsubscribe`` function.
+
+        :returns: The ``unsubscribe`` function for the subscriber.
+        """
+        return self._unsubscribe
 
 
 class Store:
@@ -69,53 +139,19 @@ class Store:
 
     This object is responsible of the global state. Its main responsibilities
     are:
-    * Keeping track of all the subscribers, and call them on state changes.
-    * Keeping reference to the reducer to be used and call it to proprly handle
-    state changes.
 
-    There are two ways to subscribe and usubscribe to store changes:
-
-    #. using the ``Store.subscribe`` method:
-
-       .. code:: python
-
-           # create the store object
-           store = Store(root_reducer)
-
-           # define the function
-           def a_subscriber():
-               # do something!
-               pass
-
-           # subscribe the function
-           unsubscribe = store.subscribe(a_subscriber)
-
-           # unsubscribe the function
-           unsubscribe()
-
-    #. using the ``Store.subscriber`` decorator:
-
-       .. code:: python
-
-           # create the store object
-           store = Store(root_reducer)
-
-           # define and subscribe the function
-           @store.subscriber
-           def a_subscriber():
-               # do something!
-               pass
-
-           # unsubscribe the function
-           a_subscriber.unsubscribe()
+    * Keeping track of all the *subscribers*, and call them on **state
+      changes**.
+    * Keeping reference to the *reducer* to be used and call it to properly
+      handle **state changes**.
     """
     def __init__(self, reducer: Union[Reducer, Module]) -> None:
         """Constructor.
 
-        Creates the store, using the given function as reducer. At the beginning
-        no callback is subscribed to store changes. It is possible to add
-        subscribers later, while there is no way - at the moment - to replace
-        the reducer.
+        Creates the store, using the given function as ``reducer``. At the
+        beginning no callback is subscribed to *store changes*. It is possible
+        to add subscribers later, while there is no way - *at the moment* - to
+        replace the reducer.
 
         :param reducer: The root reducer.
         """
@@ -128,32 +164,34 @@ class Store:
         self.dispatch(init())
 
     def subscribe(self, callback: Callable[[], None]) -> Callable[[], None]:
-        """Subscribes a callback to state changes.
+        """Subscribes a callback to *state changes*.
 
         Every time the state changes, the callback is called. No parameters are
-        passed to the callback. It is responsibility of the store handler to
-        actually connect the store with the caller. The returned function can be
-        called without arguments to unsubscribe the callback.
+        passed to the callback. It is responsibility of the callback to actually
+        connect the store with the caller. The returned function can be called
+        without arguments to unsubscribe the callback.
 
         :param callback: The callback to be subscribed.
-        :returns: The unsubscribe functions.
+        :returns: The unsubscribe function.
         """
         key = uuid.uuid1()
         self._subscribers[key] = callback
 
-        def unsubscribe():
+        def unsubscribe() -> None:
             self._subscribers.pop(key, None)
 
         return unsubscribe
 
     def subscriber(self, callback: Callable[[], None]) -> Subscriber:
-        """Decorator function to subscribe a function to store changes.
+        """Decorator function to subscribe a function to *store changes*.
 
         The subscribed function will be called every time the internal state of
         the store changes.
+
         **NOTE: The decorator function will return the function itself**. To
-        unsubscribe the callback the user should use the *unsubscribe* function
-        attached into the callback.
+        unsubscribe the callback the user should use the
+        :any:`revived.store.Subscriber.unsubscribe` function attached into the
+        callback.
 
         :param callback: The callback to be subscribed. :returns: The callback
             itself.
@@ -164,14 +202,16 @@ class Store:
         return s
 
     def dispatch(self, action: Action) -> None:
-        """Dispatches an action.
+        """Dispatches an *action*.
 
-        This is the only piece of code responsible of dispatching actions. When
-        an action is dispatched, the state is changed according to the defined
-        root reducer and all the subscribers are called. **The calling order is
-        not guaranteed**.
+        This is the only piece of code responsible of *dispatching actions*.
+        When an action is dispatched, the state is changed according to the
+        defined root reducer and all the subscribers are called.
+
+        **The calling order is not guaranteed**.
 
         :param action: The action that should be dispatched.
+        :raises: :class:`revived.store.DispatchInReducerError`
         """
         if self._is_reducing:
             raise DispatchInReducerError

@@ -1,4 +1,6 @@
-"""Action module.
+"""
+Action module
+=============
 
 This module implements helper functions and classes that can be used to define
 actions and action creators, in the same fashion of redux ones, but using
@@ -21,7 +23,10 @@ class ActionType(str, Enum):
     for each module. Usually there would be no need for such a feature-less
     class, but it is pretty handy while using type hints.
     """
-    pass
+    # FIXME: this method is added to avoid sphinx_autodoc_typehints errors:
+    # see https://github.com/agronholm/sphinx-autodoc-typehints/issues/12
+    def __init__(*args, **kwargs):
+        pass
 
 
 class Action(dict):
