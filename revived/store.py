@@ -5,6 +5,23 @@ Store module
 This module implements the **global state store**, and the ``init`` action and
 action_creator. This is the entry point of the revived module.
 
+:any:`revived.store.Store` is the object that brings ``actions`` and
+``reducers``. The store has the following responsibilities:
+
+* Holds application state;
+* Allows access to state via :any:`revived.store.Store.get_state`;
+* Allows state to be updated via :any:`revived.store.Store.dispatch`;
+* Registers listeners via :any:`revived.store.Store.subscribe` or
+  :any:`revived.store.Store.subscriber` decorator;
+* Handles unregistering of listeners via the function returned by
+  :any:`revived.store.Store.subscribe` or via the property
+  :any:`revived.store.Subscriber.unsubscribe` of the
+  :any:`revived.store.Subscriber` instance.
+
+It's important to note that you'll only have a single store in your application.
+When you want to split your data handling logic, you'll use ``reducer``
+composition instead of many stores.
+
 Dispatch actions
 ----------------
 
@@ -104,19 +121,16 @@ class Subscriber:
     """Wrapper around a subscriber function with the ``unsubscribe`` property.
 
     While creating a subscriber using the decorator it is not possible to return
-    the ``unsubscribe`` function. So a ``Subscriber`` is created wrapping the
-    callback, that contains the :any:`revived.store.Subscriber.unsubscribe`
-    function to be used to properly unregister the subscriber.
+    the ``unsubscribe`` function. So a :any:`revived.store.Subscriber` is
+    created wrapping the callback, that contains the
+    :any:`revived.store.Subscriber.unsubscribe` function to be used to properly
+    unregister the subscriber.
+
+    :param callback: The callback to be wrapped into the subscriber.
+    :param unsubscribe: The unsubscribe function for the subscriber.
     """
+
     def __init__(self, callback: Callable[[], None], unsubscribe: Callable[[], None]) -> None:
-        """Constructor.
-
-        Creates a subscriber wrapper around a callback, with the provided
-        ``unsubscribe`` function.
-
-        :param callback: The callback to be wrapped into the subscriber.
-        :param unsubscribe: The unsubscribe function for the subscriber.
-        """
         self.callback = callback
         self._unsubscribe = unsubscribe
 
@@ -135,7 +149,7 @@ class Subscriber:
 
 
 class Store:
-    """Container object of the global state.
+    """Container object for the global state.
 
     This object is responsible of the global state. Its main responsibilities
     are:
@@ -144,17 +158,16 @@ class Store:
       changes**.
     * Keeping reference to the *reducer* to be used and call it to properly
       handle **state changes**.
+
+    Creates the store, using the given function as ``reducer``. At the
+    beginning no callback is subscribed to *store changes*. It is possible
+    to add subscribers later, while there is no way - *at the moment* - to
+    replace the reducer.
+
+    :param reducer: The root reducer.
     """
+
     def __init__(self, reducer: Union[Reducer, Module]) -> None:
-        """Constructor.
-
-        Creates the store, using the given function as ``reducer``. At the
-        beginning no callback is subscribed to *store changes*. It is possible
-        to add subscribers later, while there is no way - *at the moment* - to
-        replace the reducer.
-
-        :param reducer: The root reducer.
-        """
         self._reducer = reducer
         self._state = None  # type: Any
 
@@ -202,15 +215,15 @@ class Store:
         return s
 
     def dispatch(self, action: Action) -> None:
-        """Dispatches an *action*.
+        """Dispatches an ``action``.
 
         This is the only piece of code responsible of *dispatching actions*.
-        When an action is dispatched, the state is changed according to the
+        When an ``action`` is dispatched, the state is changed according to the
         defined root reducer and all the subscribers are called.
 
         **The calling order is not guaranteed**.
 
-        :param action: The action that should be dispatched.
+        :param action: The ``action`` that should be dispatched.
         :raises: :class:`revived.store.DispatchInReducerError`
         """
         if self._is_reducing:

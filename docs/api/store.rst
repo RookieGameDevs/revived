@@ -3,4 +3,3 @@
 
 .. automodule:: revived.store
    :members:
-   :special-members:
