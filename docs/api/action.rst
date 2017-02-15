@@ -3,4 +3,3 @@
 
 .. automodule:: revived.action
    :members:
-   :special-members:
