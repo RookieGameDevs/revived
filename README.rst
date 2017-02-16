@@ -74,10 +74,10 @@ Contribute
 #. Run tests::
 
     # to have coverage in command line
-    pytest --cov=revived tests
+    pytest --cov revived --pep8 revived tests
 
     # to have html coverage file in the htmlcov directory
-    pytest --cov=revived --cov-report html tests
+    pytest --cov revived --cov-report html --pep8 revived tests
 
 #. Check type hints::
 
