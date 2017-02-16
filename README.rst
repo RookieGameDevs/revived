@@ -2,6 +2,9 @@
 Revived
 =======
 
+.. image:: https://travis-ci.org/RookieGameDevs/revived.svg?branch=master
+    :target: https://travis-ci.org/RookieGameDevs/revived
+
 .. image:: https://readthedocs.org/projects/revived/badge/?version=latest
    :target: http://revived.readthedocs.io/en/latest/?badge=latest
    :alt: Documentation Status
