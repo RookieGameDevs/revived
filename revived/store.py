@@ -1,9 +1,9 @@
 """
-Store module
-============
-
-This module implements the **global state store**, and the ``init`` action and
+This module implements the **global state store**, and the ``INIT`` action and
 action_creator. This is the entry point of the revived module.
+
+Rationale behind the ``Store``
+==============================
 
 :any:`revived.store.Store` is the object that brings ``actions`` and
 ``reducers``. The store has the following responsibilities:
@@ -23,7 +23,7 @@ When you want to split your data handling logic, you'll use ``reducer``
 composition instead of many stores.
 
 Dispatch actions
-----------------
+================
 
 To dispatch actions the :any:`revived.store.Store.dispatch` method should be
 used, passing as parameter the result of an action_creator. See more in
@@ -41,43 +41,48 @@ used, passing as parameter the result of an action_creator. See more in
     store.dispatch(an_action_creator(a_parameter, another_parameter))
 
 Subscribe and unsubscribe to state changes
-------------------------------------------
+==========================================
 
-There are two ways to **subscribe** and **usubscribe** to store changes:
+There are two ways to **subscribe** and **usubscribe** to store changes: using
+the :any:`revived.store.Store.subscribe` method or the
+:any:`revived.store.Store.subscriber` decorator. Both approaches are equivalent
+and the choice should be just made based on your taste.
 
-#. using the :any:`revived.store.Store.subscribe` method:
+Subscribe using :any:`revived.store.Store.subscribe`
+----------------------------------------------------
 
-    .. code:: python
+.. code:: python
 
-        # create the store object
-        store = Store(root_reducer)
+    # create the store object
+    store = Store(root_reducer)
 
-        # define the function
-        def a_subscriber():
-            # do something!
-            pass
+    # define the function
+    def a_subscriber():
+        # do something!
+        pass
 
-        # subscribe the function
-        unsubscribe = store.subscribe(a_subscriber)
+    # subscribe the function
+    unsubscribe = store.subscribe(a_subscriber)
 
-        # unsubscribe the function
-        unsubscribe()
+    # unsubscribe the function
+    unsubscribe()
 
-#. using the :any:`revived.store.Store.subscriber` decorator:
+Subscribe using :any:`revived.store.Store.subscriber`
+-----------------------------------------------------
 
-    .. code:: python
+.. code:: python
 
-        # create the store object
-        store = Store(root_reducer)
+    # create the store object
+    store = Store(root_reducer)
 
-        # define and subscribe the function
-        @store.subscriber
-        def a_subscriber():
-            # do something!
-            pass
+    # define and subscribe the function
+    @store.subscriber
+    def a_subscriber():
+        # do something!
+        pass
 
-        # unsubscribe the function
-        a_subscriber.unsubscribe()
+    # unsubscribe the function
+    a_subscriber.unsubscribe()
 """
 from .action import action
 from .action import Action

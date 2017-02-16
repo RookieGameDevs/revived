@@ -1,13 +1,10 @@
 """
-Action module
-=============
-
 This module implements helper functions and classes that can be used to define
 ``actions`` and ``action creators``, in the same fashion of redux ones, but
 using decorators instead of anonymous functions.
 
 Actions and action creators
----------------------------
+===========================
 
 Actions are payloads of information that send data from your application to your
 ``store``. They are the only source of information for the ``store``. You send
@@ -23,7 +20,7 @@ to conflate the terms ``action`` and ``action creator``, so do your best to use
 the *proper term*.
 
 Define action types
--------------------
+===================
 
 While you are free to define the action type enum as he prefers, it is
 **strongly suggested** to write them down in this way:
@@ -38,7 +35,7 @@ While you are free to define the action type enum as he prefers, it is
 
 
 Define action creators
-----------------------
+======================
 
 While it is possible to explicitly build :any:`revived.action.Action` instances
 directly, it is **strongly suggested** to create ``actions`` using ``action
