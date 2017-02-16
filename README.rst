@@ -3,7 +3,10 @@ Revived
 =======
 
 .. image:: https://travis-ci.org/RookieGameDevs/revived.svg?branch=master
-    :target: https://travis-ci.org/RookieGameDevs/revived
+   :target: https://travis-ci.org/RookieGameDevs/revived
+
+.. image:: https://codecov.io/gh/RookieGameDevs/revived/branch/master/graph/badge.svg
+   :target: https://codecov.io/gh/RookieGameDevs/revived
 
 .. image:: https://readthedocs.org/projects/revived/badge/?version=latest
    :target: http://revived.readthedocs.io/en/latest/?badge=latest
