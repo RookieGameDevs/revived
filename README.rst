@@ -19,8 +19,10 @@ A predictable state container for python *heavily* inspired by Redux_
 While not being a *strict 1:1 port* of `Redux API`_, **Revived** is supposed to
 do pretty much the same job in the most pythonic way possible.
 
-**NOTE**: I needed this piece of code to work with the latest python available
-(3.6) and *I did not really care about checking for the previous versions*.
+**NOTE**: I needed this piece of code to work with the **latest python available
+at the moment** (3.6). While I am not really caring about other versions, the
+Travis build is running the test suites on **all the 3.5+ versions**, including
+the dev ones.
 
 Contents
 --------
