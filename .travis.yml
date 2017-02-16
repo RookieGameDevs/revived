@@ -13,4 +13,4 @@ script:
   - "pytest --cov revived --pep8 revived tests"
   - "mypy revived tests"
   - "cd docs; make html; cd -"
-after_success: coveralls
+after_success: codecov

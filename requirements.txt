@@ -1,5 +1,5 @@
+codecov
 coverage
-coveralls
 mypy
 pytest
 pytest-cov
