@@ -1,6 +1,5 @@
-=======================================
-``revived.action`` module documentation
-=======================================
+Action (``revived.action``) module documentation
+================================================
 
 .. automodule:: revived.action
    :members:

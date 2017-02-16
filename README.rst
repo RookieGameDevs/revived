@@ -2,6 +2,10 @@
 Revived
 =======
 
+.. image:: https://readthedocs.org/projects/revived/badge/?version=latest
+   :target: http://revived.readthedocs.io/en/latest/?badge=latest
+   :alt: Documentation Status
+
 ---------------------------------------------------------------------
 A predictable state container for python *heavily* inspired by Redux_
 ---------------------------------------------------------------------
@@ -14,10 +18,17 @@ do pretty much the same job in the most pythonic way possible.
 
 Contents
 --------
+* Documentation_
 * Installation_
 * Examples_
 * Contribute_
-* Documentation_
+
+Documentation
+-------------
+
+Currently the documentation is not buliding into ReadTheDocs (see
+`issue #11 <https://github.com/RookieGameDevs/revived/issues/11>`_). You can
+build the documentation locally. Check out Contribute_ section.
 
 Installation
 ------------
@@ -70,11 +81,6 @@ Contribute
 
 #. Create a pull request.
 #. Profit :)
-
-Documentation
--------------
-
-More detailed documentation is **coming soon**.
 
 .. _Redux: http://redux.js.org/
 .. _`Redux API`: Redux_
