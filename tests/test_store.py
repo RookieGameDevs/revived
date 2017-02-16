@@ -24,13 +24,13 @@ def test_store__dispatch(dummy_reducer):
     assert store.get_state() == 'test'
 
 
-def tets_store__dispatch__dispatch_in_reducer(dummy_reducer):
+def test_store__dispatch__dispatch_in_reducer(dummy_reducer):
     store = Store(dummy_reducer)
 
     def wrong_reducer(state, action):
         store.dispatch(Action('should fail'))
 
-    store.replace_reducer(wrong_reducer)
+    store._reducer = wrong_reducer
     with pytest.raises(DispatchInReducerError):
         store.dispatch(Action('test'))
 

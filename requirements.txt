@@ -1,5 +1,9 @@
+coverage
+coveralls
 mypy
 pytest
+pytest-cov
+pytest-pep8
 Sphinx
 sphinx_rtd_theme
 sphinx-autobuild
