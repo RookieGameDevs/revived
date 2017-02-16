@@ -73,7 +73,11 @@ Contribute
 #. Write tests.
 #. Run tests::
 
-    pytest tests
+    # to have coverage in command line
+    pytest --cov=revived tests
+
+    # to have html coverage file in the htmlcov directory
+    pytest --cov=revived --cov-report html tests
 
 #. Check type hints::
 

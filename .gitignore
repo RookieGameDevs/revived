@@ -1,7 +1,9 @@
 __pycache__
 .cache
+.coverage
 .venv
 .vscode
+*.egg-info
 build
 dist
-*.egg-info
+htmlcov

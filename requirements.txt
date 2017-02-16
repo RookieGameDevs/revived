@@ -1,5 +1,7 @@
+coverage
 mypy
 pytest
+pytest-cov
 Sphinx
 sphinx_rtd_theme
 sphinx-autobuild
