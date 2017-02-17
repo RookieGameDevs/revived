@@ -2,6 +2,9 @@
 Revived
 =======
 
+.. image:: https://badge.fury.io/py/revived.svg
+    :target: https://badge.fury.io/py/revived
+
 .. image:: https://travis-ci.org/RookieGameDevs/revived.svg?branch=master
    :target: https://travis-ci.org/RookieGameDevs/revived
 
@@ -68,6 +71,11 @@ Contribute
       # optional: automatically load the virtualenv when entering the dir
       vf connect
 
+#. Update pip and install pip-tools::
+
+    pip install --upgrade pip  # pip-tools needs pip==6.1 or higher (!)
+    pip install pip-tools
+
 #. Install the dependencies::
 
     pip install -r requirements.txt
@@ -77,7 +85,12 @@ Contribute
     cd docs
     make html  # or whatever format you prefer
 
-#. Work on the revived module.
+#. Work on the revived module. This project uses pip-tools_ so you want to add
+   your new direct dependencies in ``requirements.in`` and then compile the
+   ``requirements.txt`` using::
+
+       pip-compile requirements.in
+
 #. Write tests.
 #. Run tests::
 
@@ -98,3 +111,4 @@ Contribute
 .. _`Redux API`: Redux_
 .. _virtualenv: https://virtualenv.pypa.io/en/stable/
 .. _virtualfish: http://virtualfish.readthedocs.io/en/latest/
+.. _pip-tools: https://github.com/jazzband/pip-tools
