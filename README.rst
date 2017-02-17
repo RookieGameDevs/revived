@@ -37,9 +37,10 @@ Contents
 Documentation
 -------------
 
-Currently the documentation is not buliding into ReadTheDocs (see
-`issue #11 <https://github.com/RookieGameDevs/revived/issues/11>`_). You can
-build the documentation locally. Check out Contribute_ section.
+You can find the compiled documentation here:
+
+* http://revived.readthedocs.io
+* http://revived.rtfd.io
 
 Installation
 ------------
