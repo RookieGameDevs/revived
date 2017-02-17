@@ -1,6 +1,13 @@
 Changelog
 =========
 
+0.1.3 - 2017-02-17
+------------------
+* Integrate pip-tools: thanks to
+  `Lorenzo Villani <https://github.com/lvillani>`_ for pointing me out to this
+  solution
+
+
 0.1.2 - 2017-02-16
 ------------------
 * Add documentation, tests and test coverage
