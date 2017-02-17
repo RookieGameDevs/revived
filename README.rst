@@ -2,6 +2,9 @@
 Revived
 =======
 
+.. image:: https://badge.fury.io/py/revived.svg
+    :target: https://badge.fury.io/py/revived
+
 .. image:: https://travis-ci.org/RookieGameDevs/revived.svg?branch=master
    :target: https://travis-ci.org/RookieGameDevs/revived
 
