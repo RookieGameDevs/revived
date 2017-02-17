@@ -2,18 +2,29 @@
 Revived
 =======
 
-.. image:: https://badge.fury.io/py/revived.svg
+.. image:: https://img.shields.io/pypi/v/revived.svg
     :target: https://badge.fury.io/py/revived
+    :alt: pypi latest version
 
-.. image:: https://travis-ci.org/RookieGameDevs/revived.svg?branch=master
-   :target: https://travis-ci.org/RookieGameDevs/revived
+.. image:: https://img.shields.io/pypi/l/revived.svg
+    :target: https://badge.fury.io/py/revived
+    :alt: pypi packge license
 
-.. image:: https://codecov.io/gh/RookieGameDevs/revived/branch/master/graph/badge.svg
-   :target: https://codecov.io/gh/RookieGameDevs/revived
+.. image:: https://img.shields.io/requires/github/RookieGameDevs/revived.svg
+    :target: https://requires.io/github/RookieGameDevs/revived/requirements/?branch=master
+    :alt: dependencies status
+
+.. image:: https://img.shields.io/travis/RookieGameDevs/revived.svg
+    :target: https://travis-ci.org/RookieGameDevs/revived
+    :alt: travis build status
+
+.. image:: https://img.shields.io/codecov/c/github/RookieGameDevs/revived.svg
+    :target: https://codecov.io/gh/RookieGameDevs/revived
+    :alt: coverage status
 
 .. image:: https://readthedocs.org/projects/revived/badge/?version=latest
-   :target: http://revived.readthedocs.io/en/latest/?badge=latest
-   :alt: Documentation Status
+    :target: http://revived.readthedocs.io/en/latest/?badge=latest
+    :alt: documentation status
 
 ---------------------------------------------------------------------
 A predictable state container for python *heavily* inspired by Redux_

@@ -14,6 +14,7 @@ Welcome to revived's documentation!
 Indices and tables
 ==================
 
+* `Source code <https://github.com/RookieGameDevs/revived>`_
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
