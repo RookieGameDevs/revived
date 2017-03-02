@@ -4,7 +4,7 @@
 #
 #    pip-compile --output-file requirements.txt requirements.in
 #
-alabaster==0.7.9          # via sphinx
+alabaster==0.7.10          # via sphinx
 apipkg==1.4               # via execnet
 appdirs==1.4.2            # via setuptools
 argh==0.26.2              # via sphinx-autobuild, watchdog
@@ -45,8 +45,8 @@ six==1.10.0               # via livereload, packaging, setuptools, sphinx
 snowballstemmer==1.2.1    # via sphinx
 sphinx-autobuild==0.6.0
 sphinx-autodoc-typehints==1.1.0
-sphinx-rtd-theme==0.1.9
-sphinx==1.5.2
+sphinx-rtd-theme==0.2.0
+sphinx==1.5.3
 tornado==4.4.2            # via livereload, sphinx-autobuild
 twine==1.8.1
 typed-ast==1.0.1          # via mypy
