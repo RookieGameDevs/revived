@@ -20,7 +20,7 @@ flake8==3.3.0
 imagesize==0.7.1          # via sphinx
 jinja2==2.9.5             # via sphinx
 livereload==2.5.1         # via sphinx-autobuild
-markupsafe==0.23          # via jinja2
+markupsafe==1.0          # via jinja2
 mccabe==0.6.1             # via flake8
 mypy==0.501
 packaging==16.8           # via setuptools
