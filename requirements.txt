@@ -6,7 +6,7 @@
 #
 alabaster==0.7.10          # via sphinx
 apipkg==1.4               # via execnet
-appdirs==1.4.2            # via setuptools
+appdirs==1.4.3            # via setuptools
 argh==0.26.2              # via sphinx-autobuild, watchdog
 argparse==1.4.0           # via codecov
 args==0.1.0               # via clint
@@ -20,7 +20,7 @@ flake8==3.3.0
 imagesize==0.7.1          # via sphinx
 jinja2==2.9.5             # via sphinx
 livereload==2.5.1         # via sphinx-autobuild
-markupsafe==0.23          # via jinja2
+markupsafe==1.0          # via jinja2
 mccabe==0.6.1             # via flake8
 mypy==0.501
 packaging==16.8           # via setuptools
@@ -32,7 +32,7 @@ py==1.4.32                # via pytest
 pycodestyle==2.3.1        # via flake8
 pyflakes==1.5.0           # via flake8
 pygments==2.2.0           # via sphinx
-pyparsing==2.1.10         # via packaging
+pyparsing==2.2.0         # via packaging
 pytest-cache==1.0         # via pytest-pep8
 pytest-cov==2.4.0
 pytest-pep8==1.0.6
@@ -45,11 +45,11 @@ six==1.10.0               # via livereload, packaging, setuptools, sphinx
 snowballstemmer==1.2.1    # via sphinx
 sphinx-autobuild==0.6.0
 sphinx-autodoc-typehints==1.1.0
-sphinx-rtd-theme==0.2.2
+sphinx-rtd-theme==0.2.4
 sphinx==1.5.3
 tornado==4.4.2            # via livereload, sphinx-autobuild
 twine==1.8.1
-typed-ast==1.0.1          # via mypy
+typed-ast==1.0.2          # via mypy
 watchdog==0.8.3           # via sphinx-autobuild
 
 # The following packages are considered to be unsafe in a requirements file:
