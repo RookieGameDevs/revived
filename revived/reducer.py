@@ -132,13 +132,13 @@ code:
 
     mod = Module()
 
-    @mod.reduder(ActionType.DUMMY_ACTION_TYPE1)
+    @mod.reducer(ActionType.DUMMY_ACTION_TYPE1)
     def dummy1(prev, action):
         next = prev
         # Do something
         return next
 
-    @mod.reduder(ActionType.DUMMY_ACTION_TYPE2)
+    @mod.reducer(ActionType.DUMMY_ACTION_TYPE2)
     def dummy2(prev, action):
         next = prev
         # Do something
