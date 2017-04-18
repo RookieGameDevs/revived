@@ -47,7 +47,7 @@ sphinx-autobuild==0.6.0
 sphinx-autodoc-typehints==1.2.0
 sphinx-rtd-theme==0.2.4
 sphinx==1.5.5
-tornado==4.4.3            # via livereload, sphinx-autobuild
+tornado==4.5            # via livereload, sphinx-autobuild
 twine==1.8.1
 typed-ast==1.0.3          # via mypy
 watchdog==0.8.3           # via sphinx-autobuild
