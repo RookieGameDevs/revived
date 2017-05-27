@@ -40,7 +40,7 @@ pytest==3.1.0
 pytz==2017.2             # via babel
 pyyaml==3.12              # via sphinx-autobuild, watchdog
 requests-toolbelt==0.8.0  # via twine
-requests==2.16.0          # via codecov, requests-toolbelt, sphinx, twine
+requests==2.16.1          # via codecov, requests-toolbelt, sphinx, twine
 six==1.10.0               # via livereload, packaging, setuptools, sphinx
 snowballstemmer==1.2.1    # via sphinx
 sphinx-autobuild==0.6.0
@@ -48,7 +48,7 @@ sphinx-autodoc-typehints==1.2.0
 sphinx-rtd-theme==0.2.4
 sphinx==1.6.1
 tornado==4.5.1            # via livereload, sphinx-autobuild
-twine==1.9.0
+twine==1.9.1
 typed-ast==1.0.3          # via mypy
 watchdog==0.8.3           # via sphinx-autobuild
 
