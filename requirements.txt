@@ -27,7 +27,7 @@ packaging==16.8           # via setuptools
 pathtools==0.1.2          # via sphinx-autobuild, watchdog
 pep8==1.7.0               # via pytest-pep8
 pkginfo==1.4.1            # via twine
-port-for==0.3.1           # via sphinx-autobuild
+port-for==0.4           # via sphinx-autobuild
 py==1.4.34                # via pytest
 pycodestyle==2.3.1        # via flake8
 pyflakes==1.5.0           # via flake8
