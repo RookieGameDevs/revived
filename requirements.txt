@@ -41,7 +41,7 @@ pytz==2017.2             # via babel
 pyyaml==3.12              # via sphinx-autobuild, watchdog
 requests-toolbelt==0.8.0  # via twine
 requests==2.18.4          # via codecov, requests-toolbelt, sphinx, twine
-six==1.10.0               # via livereload, packaging, setuptools, sphinx
+six==1.11.0               # via livereload, packaging, setuptools, sphinx
 snowballstemmer==1.2.1    # via sphinx
 sphinx-autobuild==0.7.1
 sphinx-autodoc-typehints==1.2.3
