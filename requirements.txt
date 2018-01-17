@@ -44,7 +44,7 @@ requests==2.18.4          # via codecov, requests-toolbelt, sphinx, twine
 six==1.11.0               # via livereload, packaging, setuptools, sphinx
 snowballstemmer==1.2.1    # via sphinx
 sphinx-autobuild==0.7.1
-sphinx-autodoc-typehints==1.2.3
+sphinx-autodoc-typehints==1.2.4
 sphinx-rtd-theme==0.2.4
 sphinx==1.6.6
 tornado==4.5.3            # via livereload, sphinx-autobuild
