@@ -10,7 +10,7 @@ appdirs==1.4.3            # via setuptools
 argh==0.26.2              # via sphinx-autobuild, watchdog
 argparse==1.4.0           # via codecov
 args==0.1.0               # via clint
-babel==2.5.3              # via sphinx
+babel==2.6.0              # via sphinx
 clint==0.5.1              # via twine
 codecov==2.0.15
 coverage==4.5.1
