@@ -38,7 +38,7 @@ pytest-cov==2.5.1
 pytest-pep8==1.0.6
 pytest==3.6.2
 pytz==2018.4             # via babel
-pyyaml==3.12              # via sphinx-autobuild, watchdog
+pyyaml==4.1              # via sphinx-autobuild, watchdog
 requests-toolbelt==0.8.0  # via twine
 requests==2.19.1          # via codecov, requests-toolbelt, sphinx, twine
 six==1.11.0               # via livereload, packaging, setuptools, sphinx
