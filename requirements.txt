@@ -22,7 +22,7 @@ jinja2==2.10             # via sphinx
 livereload==2.5.2         # via sphinx-autobuild
 markupsafe==1.0          # via jinja2
 mccabe==0.6.1             # via flake8
-mypy==0.610
+mypy==0.620
 packaging==17.1           # via setuptools
 pathtools==0.1.2          # via sphinx-autobuild, watchdog
 pep8==1.7.1               # via pytest-pep8
@@ -38,7 +38,7 @@ pytest-cov==2.5.1
 pytest-pep8==1.0.6
 pytest==3.6.3
 pytz==2018.5             # via babel
-pyyaml==4.1              # via sphinx-autobuild, watchdog
+pyyaml==3.13              # via sphinx-autobuild, watchdog
 requests-toolbelt==0.8.0  # via twine
 requests==2.19.1          # via codecov, requests-toolbelt, sphinx, twine
 six==1.11.0               # via livereload, packaging, setuptools, sphinx
