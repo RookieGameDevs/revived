@@ -4,7 +4,7 @@
 #
 #    pip-compile --output-file requirements.txt requirements.in
 #
-alabaster==0.7.11          # via sphinx
+alabaster==0.7.12          # via sphinx
 apipkg==1.5               # via execnet
 appdirs==1.4.3            # via setuptools
 argh==0.26.2              # via sphinx-autobuild, watchdog
