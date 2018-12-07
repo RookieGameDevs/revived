@@ -22,7 +22,7 @@ jinja2==2.10             # via sphinx
 livereload==2.6.0         # via sphinx-autobuild
 markupsafe==1.1.0          # via jinja2
 mccabe==0.6.1             # via flake8
-mypy==0.641
+mypy==0.650
 packaging==18.0           # via setuptools
 pathtools==0.1.2          # via sphinx-autobuild, watchdog
 pep8==1.7.1               # via pytest-pep8
