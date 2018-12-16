@@ -31,7 +31,7 @@ port-for==0.4           # via sphinx-autobuild
 py==1.7.0                # via pytest
 pycodestyle==2.4.0        # via flake8
 pyflakes==2.0.0           # via flake8
-pygments==2.3.0           # via sphinx
+pygments==2.3.1           # via sphinx
 pyparsing==2.3.0         # via packaging
 pytest-cache==1.0         # via pytest-pep8
 pytest-cov==2.6.0
