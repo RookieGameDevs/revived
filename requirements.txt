@@ -36,7 +36,7 @@ pyparsing==2.3.1         # via packaging
 pytest-cache==1.0         # via pytest-pep8
 pytest-cov==2.6.1
 pytest-pep8==1.0.6
-pytest==4.1.1
+pytest==4.2.0
 pytz==2018.9             # via babel
 pyyaml==3.13              # via sphinx-autobuild, watchdog
 requests-toolbelt==0.9.1  # via twine
