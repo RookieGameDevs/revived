@@ -15,7 +15,7 @@ clint==0.5.1              # via twine
 codecov==2.0.15
 coverage==4.5.4
 docutils==0.15.2          # via sphinx
-execnet==1.7.0            # via pytest-cache
+execnet==1.7.1            # via pytest-cache
 flake8==3.7.8
 imagesize==1.1.0          # via sphinx
 jinja2==2.10.1             # via sphinx
@@ -36,7 +36,7 @@ pyparsing==2.4.2         # via packaging
 pytest-cache==1.0         # via pytest-pep8
 pytest-cov==2.7.1
 pytest-pep8==1.0.6
-pytest==5.1.1
+pytest==5.1.2
 pytz==2019.2             # via babel
 pyyaml==5.1.2              # via sphinx-autobuild, watchdog
 requests-toolbelt==0.9.1  # via twine
