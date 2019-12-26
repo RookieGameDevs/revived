@@ -17,7 +17,7 @@ coverage==5.0.1
 docutils==0.15.2          # via sphinx
 execnet==1.7.1            # via pytest-cache
 flake8==3.7.9
-imagesize==1.1.0          # via sphinx
+imagesize==1.2.0          # via sphinx
 jinja2==2.10.3             # via sphinx
 livereload==2.6.1         # via sphinx-autobuild
 markupsafe==1.1.1          # via jinja2
