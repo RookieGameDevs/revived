@@ -13,7 +13,7 @@ args==0.1.0               # via clint
 babel==2.8.0              # via sphinx
 clint==0.5.1              # via twine
 codecov==2.0.15
-coverage==5.0.2
+coverage==5.0.3
 docutils==0.15.2          # via sphinx
 execnet==1.7.1            # via pytest-cache
 flake8==3.7.9
