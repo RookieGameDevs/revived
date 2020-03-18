@@ -12,7 +12,7 @@ argparse==1.4.0           # via codecov
 args==0.1.0               # via clint
 babel==2.8.0              # via sphinx
 clint==0.5.1              # via twine
-codecov==2.0.21
+codecov==2.0.22
 coverage==5.0.4
 docutils==0.16          # via sphinx
 execnet==1.7.1            # via pytest-cache
