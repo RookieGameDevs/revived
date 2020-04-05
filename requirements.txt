@@ -46,7 +46,7 @@ snowballstemmer==2.0.0    # via sphinx
 sphinx-autobuild==0.7.1
 sphinx-autodoc-typehints==1.10.3
 sphinx-rtd-theme==0.4.3
-sphinx==2.4.4
+sphinx==3.0.0
 tornado==6.0.4            # via livereload, sphinx-autobuild
 twine==3.1.1
 typed-ast==1.4.1          # via mypy
