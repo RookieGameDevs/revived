@@ -34,7 +34,7 @@ pyflakes==2.2.0           # via flake8
 pygments==2.6.1           # via sphinx
 pyparsing==2.4.7         # via packaging
 pytest-cache==1.0         # via pytest-pep8
-pytest-cov==2.8.1
+pytest-cov==2.9.0
 pytest-pep8==1.0.6
 pytest==5.4.2
 pytz==2020.1             # via babel
