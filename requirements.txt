@@ -19,7 +19,7 @@ execnet==1.7.1            # via pytest-cache
 flake8==3.8.2
 imagesize==1.2.0          # via sphinx
 jinja2==2.11.2             # via sphinx
-livereload==2.6.1         # via sphinx-autobuild
+livereload==2.6.2         # via sphinx-autobuild
 markupsafe==1.1.1          # via jinja2
 mccabe==0.6.1             # via flake8
 mypy==0.780
