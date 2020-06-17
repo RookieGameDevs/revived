@@ -40,7 +40,7 @@ pytest==5.4.3
 pytz==2020.1             # via babel
 pyyaml==5.3.1              # via sphinx-autobuild, watchdog
 requests-toolbelt==0.9.1  # via twine
-requests==2.23.0          # via codecov, requests-toolbelt, sphinx, twine
+requests==2.24.0          # via codecov, requests-toolbelt, sphinx, twine
 six==1.15.0               # via livereload, packaging, setuptools, sphinx
 snowballstemmer==2.0.0    # via sphinx
 sphinx-autobuild==0.7.1
