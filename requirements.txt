@@ -16,7 +16,7 @@ codecov==2.1.9
 coverage==5.3
 docutils==0.16          # via sphinx
 execnet==1.7.1            # via pytest-cache
-flake8==3.8.3
+flake8==3.8.4
 imagesize==1.2.0          # via sphinx
 jinja2==2.11.2             # via sphinx
 livereload==2.6.3         # via sphinx-autobuild
