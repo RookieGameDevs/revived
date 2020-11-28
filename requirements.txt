@@ -23,7 +23,7 @@ livereload==2.6.3         # via sphinx-autobuild
 markupsafe==1.1.1          # via jinja2
 mccabe==0.6.1             # via flake8
 mypy==0.790
-packaging==20.5           # via setuptools
+packaging==20.7           # via setuptools
 pathtools==0.1.2          # via sphinx-autobuild, watchdog
 pep8==1.7.1               # via pytest-pep8
 pkginfo==1.6.1            # via twine
