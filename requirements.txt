@@ -49,7 +49,7 @@ sphinx-rtd-theme==0.5.0
 sphinx==3.4.1
 tornado==6.1            # via livereload, sphinx-autobuild
 twine==3.3.0
-typed-ast==1.4.1          # via mypy
+typed-ast==1.4.2          # via mypy
 watchdog==1.0.2           # via sphinx-autobuild
 
 # The following packages are considered to be unsafe in a requirements file:
