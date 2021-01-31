@@ -18,7 +18,7 @@ docutils==0.16          # via sphinx
 execnet==1.8.0            # via pytest-cache
 flake8==3.8.4
 imagesize==1.2.0          # via sphinx
-jinja2==2.11.2             # via sphinx
+jinja2==2.11.3             # via sphinx
 livereload==2.6.3         # via sphinx-autobuild
 markupsafe==1.1.1          # via jinja2
 mccabe==0.6.1             # via flake8
