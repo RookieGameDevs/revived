@@ -43,7 +43,7 @@ requests-toolbelt==0.9.1  # via twine
 requests==2.25.1          # via codecov, requests-toolbelt, sphinx, twine
 six==1.15.0               # via livereload, packaging, setuptools, sphinx
 snowballstemmer==2.1.0    # via sphinx
-sphinx-autobuild==2020.9.1
+sphinx-autobuild==2021.3.14
 sphinx-autodoc-typehints==1.11.1
 sphinx-rtd-theme==0.5.1
 sphinx==3.5.2
