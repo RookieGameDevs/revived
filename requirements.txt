@@ -14,7 +14,7 @@ babel==2.9.0              # via sphinx
 clint==0.5.1              # via twine
 codecov==2.1.11
 coverage==5.5
-docutils==0.17          # via sphinx
+docutils==0.17.1          # via sphinx
 execnet==1.8.0            # via pytest-cache
 flake8==3.9.1
 imagesize==1.2.0          # via sphinx
