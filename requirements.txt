@@ -50,7 +50,7 @@ sphinx==4.0.1
 tornado==6.1            # via livereload, sphinx-autobuild
 twine==3.4.1
 typed-ast==1.4.3          # via mypy
-watchdog==2.1.1           # via sphinx-autobuild
+watchdog==2.1.2           # via sphinx-autobuild
 
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools                # via pytest, twine
