@@ -26,7 +26,7 @@ mypy==0.910
 packaging==21.0           # via setuptools
 pathtools==0.1.2          # via sphinx-autobuild, watchdog
 pep8==1.7.1               # via pytest-pep8
-pkginfo==1.7.0            # via twine
+pkginfo==1.7.1            # via twine
 port-for==0.6.1           # via sphinx-autobuild
 py==1.10.0                # via pytest
 pycodestyle==2.7.0        # via flake8
